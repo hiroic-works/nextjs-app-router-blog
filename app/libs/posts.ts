@@ -1,5 +1,6 @@
 import { MicroCMSQueries, createClient } from "microcms-js-sdk";
 import { Posts } from "@/app/types/posts";
+import { notFound } from "next/navigation";
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
@@ -17,10 +18,12 @@ export const client = createClient({
 });
 
 export const getAllPost = async (queries?: MicroCMSQueries) => {
-  const listData = await client.getList<Posts>({
-    endpoint,
-    queries,
-  });
+  const listData = await client
+    .getList<Posts>({
+      endpoint,
+      queries,
+    })
+    .catch(notFound);
 
   return listData;
 };
@@ -29,10 +32,12 @@ export const getPostDetail = async (
   contentId: string,
   queries?: MicroCMSQueries
 ) => {
-  const detailData = await client.getListDetail<Posts>({
-    endpoint,
-    contentId,
-    queries,
-  });
+  const detailData = await client
+    .getListDetail<Posts>({
+      endpoint,
+      contentId,
+      queries,
+    })
+    .catch(notFound);
   return detailData;
 };

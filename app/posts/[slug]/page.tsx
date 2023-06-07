@@ -1,7 +1,10 @@
-import { ResolvingMetadata } from "next";
-import { notFound } from "next/navigation";
-import parse from "html-react-parser";
-import Image from "next/image";
+import { Metadata, ResolvingMetadata } from "next";
+import parse, {
+  Element,
+  HTMLReactParserOptions,
+  attributesToProps,
+} from "html-react-parser";
+import PostWriter from "@/app/components/post-writer";
 import { getAllPost, getPostDetail } from "@/app/libs/posts";
 
 export async function generateMetadata(
@@ -11,7 +14,7 @@ export async function generateMetadata(
     params: { slug: string };
   },
   parent: ResolvingMetadata
-) {
+): Promise<Metadata> {
   const parentMetadata = await parent;
   const post = await getPostDetail(slug);
   const siteUrl = process.env.SITE_URL || "";
@@ -51,27 +54,26 @@ export default async function PostsDetail({
 }) {
   const post = await getPostDetail(slug);
 
-  if (!post) notFound();
+  const parseOptions: HTMLReactParserOptions = {
+    replace: (domNode) => {
+      if (domNode instanceof Element && domNode.name === "iframe") {
+        const props = attributesToProps(domNode.attribs);
+        return (
+          <div className="relative overflow-hidden w-full aspect-video">
+            <iframe {...props} className="absolute inset-0 w-full h-full" />
+          </div>
+        );
+      }
+    },
+  };
 
   return (
-    <main>
-      <h1>{post.title}</h1>
-      <div>{parse(post.body)}</div>
-      {post.writer && (
-        <>
-          <h2>Author</h2>
-          <div>{post.writer?.name}</div>
-          <div>{post.writer?.text}</div>
-          <div>
-            <Image
-              src={post.writer?.image?.url}
-              width={post.writer?.image?.width}
-              height={post.writer?.image?.height}
-              alt="Author"
-            />
-          </div>
-        </>
-      )}
-    </main>
+    <article className="text-gray-600 max-w-5xl px-5 py-10 md:py-20 mx-auto">
+      <div className="prose max-w-full">
+        <h1>{post.title}</h1>
+        {parse(post.body, parseOptions)}
+      </div>
+      {post.writer && <PostWriter writer={post.writer} />}
+    </article>
   );
 }
