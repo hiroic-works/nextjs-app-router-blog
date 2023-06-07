@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import "./globals.css";
+import Header from "@/app/components/header";
+import Footer from "@/app/components/footer";
 
 const siteName = "サンプルブログ";
 const siteDescription = "サンプルブログです。";
@@ -46,7 +48,11 @@ export default function RootLayout({
       <head>
         <link rel="mask-icon" href="/icon.svg" />
       </head>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
