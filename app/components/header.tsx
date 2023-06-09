@@ -20,10 +20,10 @@ export default function header() {
           <span className="ml-3 text-xl">Sample Site</span>
         </Link>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          <Link href="#" className="mr-5 hover:text-gray-900">
+          <Link href="/about" className="mr-5 hover:text-gray-900">
             About
           </Link>
-          <Link href="#" className="mr-5 hover:text-gray-900">
+          <Link href="/contact" className="mr-5 hover:text-gray-900">
             Contact
           </Link>
         </nav>
