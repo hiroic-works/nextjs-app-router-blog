@@ -1,4 +1,5 @@
 import { Metadata, ResolvingMetadata } from "next";
+import dayjs from "dayjs";
 import parse, {
   Element,
   HTMLReactParserOptions,
@@ -6,6 +7,7 @@ import parse, {
 } from "html-react-parser";
 import PostWriter from "@/app/components/post-writer";
 import { getAllPost, getPostDetail } from "@/app/libs/posts";
+import Breadclumb from "@/app/components/breadcrumb";
 
 export async function generateMetadata(
   {
@@ -69,11 +71,24 @@ export default async function PostsDetail({
 
   return (
     <article className="text-gray-600 max-w-5xl px-5 py-10 md:py-20 mx-auto">
+      <div className="mb-8">
+        <Breadclumb post={post} />
+      </div>
       <div className="prose max-w-full">
         <h1>{post.title}</h1>
+        {post.category && (
+          <div className="block text-sm">カテゴリー: {post.category.name}</div>
+        )}
+        <div className="block text-sm">
+          作成日: {dayjs(post.createdAt).format("YYYY-MM-DD")}
+        </div>
         {parse(post.body, parseOptions)}
       </div>
-      {post.writer && <PostWriter writer={post.writer} />}
+      {post.writer && (
+        <div className="mt-8">
+          <PostWriter writer={post.writer} />
+        </div>
+      )}
     </article>
   );
 }
