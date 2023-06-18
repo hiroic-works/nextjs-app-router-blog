@@ -80,7 +80,11 @@ export default async function PostsDetail({
           <div className="block text-sm">カテゴリー: {post.category.name}</div>
         )}
         <div className="block text-sm">
-          作成日: {dayjs(post.createdAt).format("YYYY-MM-DD")}
+          公開日: {dayjs(post.publishedAt).format("YYYY-MM-DD")}
+          {"  "}
+          {post.publishedAt !== post.updatedAt
+            ? `更新日: ${dayjs(post.updatedAt).format("YYYY-MM-DD")}`
+            : ""}
         </div>
         {parse(post.body, parseOptions)}
       </div>

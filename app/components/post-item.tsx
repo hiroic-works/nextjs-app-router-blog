@@ -1,6 +1,7 @@
 import { Posts } from "@/app/types/posts";
 import Image from "next/image";
 import Link from "next/link";
+import dayjs from "dayjs";
 
 export default function PostItem({ post }: { post: Posts }) {
   return (
@@ -14,9 +15,14 @@ export default function PostItem({ post }: { post: Posts }) {
           alt="blog"
         />
         <div className="p-6">
-          <h2 className="tracking-widest text-xs font-medium text-gray-400 mb-1">
-            {post.category ? post.category.name : "No Category"}
-          </h2>
+          <div className="flex flex-wrap items-center mb-1 tracking-widest text-xs font-medium text-gray-400">
+            <div className="inline-block pr-4">
+              {dayjs(post.publishedAt).format("YYYY-MM-DD")}
+            </div>
+            <h2 className="">
+              {post.category ? post.category.name : "No Category"}
+            </h2>
+          </div>
           <h1 className="line-clamp-1 text-lg font-medium text-gray-900 mb-3">
             {post.title}
           </h1>
