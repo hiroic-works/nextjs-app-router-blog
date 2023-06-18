@@ -1,14 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/app/icon.svg";
+import Navigation from "@/app/components/navigation";
+import { getAllCategory } from "@/app/libs/posts";
 
-export default function header() {
+export default async function Header() {
+  const { contents: categories } = await getAllCategory();
   return (
     <header className="text-gray-600 border-b">
-      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <div className="container mx-auto flex flex-wrap p-5 justify-between md:flex-row items-center">
         <Link
           href="/"
-          className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+          className="flex title-font font-medium items-center text-gray-900"
         >
           <Image
             className="w-12 h-12 rounded-full"
@@ -19,14 +22,7 @@ export default function header() {
           />
           <span className="ml-3 text-xl">Sample Site</span>
         </Link>
-        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          <Link href="/about" className="mr-5 hover:text-gray-900">
-            About
-          </Link>
-          <Link href="/contact" className="mr-5 hover:text-gray-900">
-            Contact
-          </Link>
-        </nav>
+        <Navigation categories={categories} />
       </div>
     </header>
   );
