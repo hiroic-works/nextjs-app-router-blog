@@ -1,5 +1,5 @@
 import { MicroCMSQueries, createClient } from "microcms-js-sdk";
-import { Posts } from "@/app/types/posts";
+import { Category, Posts } from "@/app/types/posts";
 import { notFound } from "next/navigation";
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
@@ -33,6 +33,31 @@ export const getPostDetail = async (
   const detailData = await client
     .getListDetail<Posts>({
       endpoint: "blog",
+      contentId,
+      queries,
+    })
+    .catch(notFound);
+  return detailData;
+};
+
+export const getAllCategory = async (queries?: MicroCMSQueries) => {
+  const listData = await client
+    .getList<Category>({
+      endpoint: "categories",
+      queries,
+    })
+    .catch(notFound);
+
+  return listData;
+};
+
+export const getCategoryDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  const detailData = await client
+    .getListDetail<Category>({
+      endpoint: "categories",
       contentId,
       queries,
     })
