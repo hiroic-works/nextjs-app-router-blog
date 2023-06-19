@@ -1,17 +1,22 @@
-import { getAllPost } from "@/app/libs/posts";
+import Pagination from "@/app/components/pagination";
 import PostItem from "@/app/components/post-item";
 import { LIMIT } from "@/app/libs/constants";
-import Pagination from "@/app/components/pagination";
+import { getAllPost } from "@/app/libs/posts";
 
-export default async function Home() {
-  const data = await getAllPost({
-    limit: LIMIT,
-  });
+export default async function PostsPagination({
+  params,
+}: {
+  params: {
+    current: string;
+  };
+}) {
+  const current = parseInt(params.current, 10);
   const PaginationBasePath = `/page`;
 
-  if (!data.contents || data.contents.length === 0)
-    return <h1>記事がありません</h1>;
-
+  const data = await getAllPost({
+    limit: LIMIT,
+    offset: LIMIT * (current - 1),
+  });
   return (
     <section className="text-gray-600 container px-5 py-10 md:py-20 mx-auto">
       <div className="flex flex-wrap -m-4">
@@ -24,6 +29,7 @@ export default async function Home() {
       <div className="mt-8">
         <Pagination
           totalCount={data.totalCount}
+          current={current}
           basePath={PaginationBasePath}
         />
       </div>
