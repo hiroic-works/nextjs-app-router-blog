@@ -1,6 +1,7 @@
 import { MicroCMSQueries, createClient } from "microcms-js-sdk";
 import { Category, Posts } from "@/app/types/posts";
 import { notFound } from "next/navigation";
+import { ResolvingMetadata } from "next";
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
@@ -63,4 +64,33 @@ export const getCategoryDetail = async (
     })
     .catch(notFound);
   return detailData;
+};
+
+export const generatePostDeitalMetaData = async (
+  params: { slug: string },
+  searchParams: { dk: string } | null,
+  parent: ResolvingMetadata
+) => {
+  const parentMetadata = await parent;
+  let sParams;
+  if (typeof searchParams?.dk === "string") {
+    sParams = { draftKey: searchParams?.dk };
+  }
+  const post = await getPostDetail(params.slug, sParams);
+  const siteUrl = process.env.SITE_URL || "";
+  const pageUrl = `${siteUrl}/posts/${params.slug}`;
+  return {
+    title: post.title,
+    description: post.description,
+    openGraph: {
+      ...parentMetadata.openGraph,
+      title: post.title,
+      description: post.description,
+      url: pageUrl,
+      type: "article",
+    },
+    alternates: {
+      canonical: pageUrl,
+    },
+  };
 };
