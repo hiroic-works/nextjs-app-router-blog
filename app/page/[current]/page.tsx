@@ -3,6 +3,8 @@ import PostItem from "@/app/components/post-item";
 import { LIMIT } from "@/app/libs/constants";
 import { getAllPost } from "@/app/libs/posts";
 
+export const revalidate = 60;
+
 export default async function PostsPagination({
   params,
 }: {

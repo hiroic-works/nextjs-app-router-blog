@@ -3,6 +3,8 @@ import PostItem from "@/app/components/post-item";
 import Pagination from "@/app/components/pagination";
 import { LIMIT } from "@/app/libs/constants";
 
+export const revalidate = 60;
+
 export default async function Category({
   params,
 }: {

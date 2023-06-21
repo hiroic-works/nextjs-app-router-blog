@@ -7,6 +7,8 @@ type Props = {
   searchParams: { q: string };
 };
 
+export const revalidate = 60;
+
 export default async function Search({ searchParams }: Props) {
   const data = await getAllPost({
     limit: LIMIT,

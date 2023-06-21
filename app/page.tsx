@@ -3,6 +3,8 @@ import PostItem from "@/app/components/post-item";
 import { LIMIT } from "@/app/libs/constants";
 import Pagination from "@/app/components/pagination";
 
+export const revalidate = 60;
+
 export default async function Home() {
   const data = await getAllPost({
     limit: LIMIT,

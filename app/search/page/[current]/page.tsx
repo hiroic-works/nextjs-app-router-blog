@@ -8,6 +8,8 @@ type Props = {
   searchParams: { q: string };
 };
 
+export const revalidate = 60;
+
 export default async function SearchPagination({
   params,
   searchParams,
