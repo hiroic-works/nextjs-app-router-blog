@@ -7,8 +7,12 @@ import parse, {
 } from "html-react-parser";
 import PostWriter from "@/app/components/post-writer";
 import Breadclumb from "@/app/components/breadcrumb";
+import SnsBtn from "@/app/components/sns-btn";
 
 export default async function PostsDetail({ post }: { post: Posts }) {
+  const siteUrl = process.env.SITE_URL || "";
+  const pageUrl = `${siteUrl}/posts/${post.id}`;
+
   const parseOptions: HTMLReactParserOptions = {
     replace: (domNode) => {
       if (domNode instanceof Element && domNode.name === "iframe") {
@@ -40,6 +44,12 @@ export default async function PostsDetail({ post }: { post: Posts }) {
             : ""}
         </div>
         {parse(post.body, parseOptions)}
+      </div>
+      <div className="mt-8">
+        <h2 className="text-2xl font-medium text-center border-b pb-2">
+          この投稿をシェアする
+        </h2>
+        <SnsBtn url={pageUrl} title={post.title} />
       </div>
       {post.writer && (
         <div className="mt-8">
