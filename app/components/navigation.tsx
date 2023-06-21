@@ -1,6 +1,7 @@
 "use client";
 
 import { Category } from "@/app/types/posts";
+import SearchForm from "@/app/components/search-form";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -48,7 +49,7 @@ export default function Navgation({ categories }: { categories: Category[] }) {
           isNavOpen ? "" : "hidden"
         } w-full absolute z-10 top-0 left-0 md:static md:block md:w-auto`}
       >
-        <ul className="flex flex-col font-medium p-4 border border-gray-100 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:rounded-lg md:border-0 md:bg-white">
+        <ul className="flex flex-col items-center font-medium p-4 border border-gray-100 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:rounded-lg md:border-0 md:bg-white">
           <li>
             <Link
               onClick={closeModal}
@@ -123,6 +124,9 @@ export default function Navgation({ categories }: { categories: Category[] }) {
             >
               Contact
             </Link>
+          </li>
+          <li>
+            <SearchForm />
           </li>
         </ul>
         <svg
