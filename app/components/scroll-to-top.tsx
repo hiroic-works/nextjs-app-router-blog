@@ -2,7 +2,7 @@
 
 import { useScroll } from "@/app/libs/hooks/useScroll";
 
-export default function Footer() {
+export default function ScrollToTop() {
   const { isShowScroll, scrollTop } = useScroll();
   return (
     <>
