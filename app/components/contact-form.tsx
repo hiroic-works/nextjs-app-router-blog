@@ -37,7 +37,7 @@ export default function ContactForm() {
           <br className="sm:hidden" />
           お返事まで今しばらくお待ちください。
         </p>
-        <Link className="underline sm:hover:no-underline" href="/">
+        <Link className="underline md:hover:no-underline" href="/">
           トップページへ戻る
         </Link>
       </div>
@@ -56,7 +56,7 @@ export default function ContactForm() {
             type="text"
             id="name"
             name="name"
-            className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none py-1 px-3 leading-8"
+            className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-black focus:outline-none py-1 px-3 leading-8"
           />
         </div>
       </div>
@@ -70,7 +70,7 @@ export default function ContactForm() {
             type="email"
             id="email"
             name="email"
-            className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none py-1 px-3 leading-8"
+            className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-black focus:outline-none py-1 px-3 leading-8"
           />
         </div>
       </div>
@@ -83,12 +83,12 @@ export default function ContactForm() {
             ref={message}
             id="message"
             name="message"
-            className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 h-60 text-base outline-none py-1 px-3 resize-none leading-6"
+            className="w-full h-60 md:h-80 bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-black focus:outline-none py-1 px-3 resize-none leading-6"
           ></textarea>
         </div>
       </div>
       <div className="py-2 sm:px-2 w-full">
-        <button className="flex mx-auto text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">
+        <button className="flex mx-auto text-white bg-black border-0 py-2 px-8 focus:outline-none rounded text-lg transition md:hover:bg-slate-600">
           送信
         </button>
       </div>

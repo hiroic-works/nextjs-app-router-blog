@@ -8,7 +8,7 @@ export default function Breadcrumb({ post }: { post: Posts }) {
         <li className="inline sm:block">
           <Link
             href="/"
-            className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400"
+            className="text-sm font-medium transition md:hover:border-b md:hover:border-gray-400"
           >
             Home
           </Link>
@@ -31,7 +31,7 @@ export default function Breadcrumb({ post }: { post: Posts }) {
               </svg>
               <Link
                 href={`/category/${post.category.id}`}
-                className="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400"
+                className="ml-1 text-sm font-medium transition md:hover:border-b md:hover:border-gray-400 md:ml-2"
               >
                 {post.category.name}
               </Link>
@@ -53,7 +53,7 @@ export default function Breadcrumb({ post }: { post: Posts }) {
                 clipRule="evenodd"
               ></path>
             </svg>
-            <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
+            <span className="ml-1 text-sm font-medium md:ml-2">
               {post.title}
             </span>
           </div>

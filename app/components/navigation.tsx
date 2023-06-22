@@ -25,11 +25,10 @@ export default function Navgation({ categories }: { categories: Category[] }) {
         onClick={() => {
           setIsNavOpen((prev) => !prev);
         }}
-        className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+        className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden md:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
         aria-controls="navbar-dropdown"
         aria-expanded={isNavOpen}
       >
-        <span className="sr-only">Open main menu</span>
         <svg
           className="w-6 h-6"
           aria-hidden="true"
@@ -54,7 +53,7 @@ export default function Navgation({ categories }: { categories: Category[] }) {
             <Link
               onClick={closeModal}
               href="/"
-              className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-blue-700 md:p-0"
+              className="block py-2 pl-3 pr-4 rounded transition md:hover:border-b md:hover:border-gray-400 md:p-0 md:pb-0"
             >
               Home
             </Link>
@@ -64,7 +63,7 @@ export default function Navgation({ categories }: { categories: Category[] }) {
               onClick={() => {
                 setIsDropDownMenuOpen((prev) => !prev);
               }}
-              className="flex items-center justify-between w-full py-2 pl-3 pr-4 md:border-0 md:hover:text-blue-700 md:rounded md:p-0 md:w-auto"
+              className="flex items-center justify-between w-full py-2 pl-3 pr-4 transition md:hover:border-b md:hover:border-gray-400 md:p-0 md:pb-0 md:w-auto"
             >
               Category
               <svg
@@ -98,7 +97,7 @@ export default function Navgation({ categories }: { categories: Category[] }) {
                     <Link
                       onClick={closeModal}
                       href={`/category/${cat.id}`}
-                      className="block px-4 py-2 hover:bg-gray-100"
+                      className="block px-4 py-2 md:hover:bg-gray-100"
                     >
                       {cat.name}
                     </Link>
@@ -111,7 +110,7 @@ export default function Navgation({ categories }: { categories: Category[] }) {
             <Link
               onClick={closeModal}
               href="/about"
-              className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-blue-700 md:p-0"
+              className="block py-2 pl-3 pr-4 rounded transition md:hover:border-b md:hover:border-gray-400 md:p-0 md:pb-0"
             >
               About
             </Link>
@@ -120,7 +119,7 @@ export default function Navgation({ categories }: { categories: Category[] }) {
             <Link
               onClick={closeModal}
               href="/contact"
-              className="block py-2 pl-3 pr-4 rounded md:border-0 md:hover:text-blue-700 md:p-0"
+              className="block py-2 pl-3 pr-4 rounded transition md:hover:border-b md:hover:border-gray-400 md:p-0 md:pb-0"
             >
               Contact
             </Link>

@@ -18,7 +18,7 @@ export default function SearchForm() {
           ref={inputRef}
           type="search"
           id="search-dropdown"
-          className="block p-1.5 z-20 text-sm bg-gray-50 rounded border border-gray-300 focus:border-black focus:outline-none"
+          className="block p-1.5 z-20 bg-gray-50 rounded border border-gray-300 focus:border-black focus:outline-none"
           placeholder="記事検索"
         />
         <button

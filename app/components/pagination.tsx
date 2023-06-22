@@ -25,7 +25,7 @@ export default function Pagination({
           {current !== p ? (
             <Link
               href={`${basePath}/${p}` + (q ? `?q=${q}` : "")}
-              className="flex items-center justify-center w-8 h-8 bg-black text-white md:hover:bg-slate-600"
+              className="flex items-center justify-center w-8 h-8 bg-black text-white transition md:hover:bg-slate-600"
             >
               {p}
             </Link>

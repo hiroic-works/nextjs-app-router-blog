@@ -9,7 +9,7 @@ export default function SnsBtn({ url, title }: Props) {
   return (
     <div className="mt-8 flex items-center justify-center gap-4">
       <a
-        className="p-2 flex items-center gap-2 border text-[#1DA1F2] border-[#1DA1F2] hover:brightness-150"
+        className="p-2 flex items-center gap-2 border text-[#1DA1F2] border-[#1DA1F2] transition md:hover:brightness-150"
         href={`https://twitter.com/share?url=${encodedUrl}&text=${encodedTitle}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -27,7 +27,7 @@ export default function SnsBtn({ url, title }: Props) {
         Twitter
       </a>
       <a
-        className="p-2 flex items-center gap-2 border text-[#46629E] border-[#46629E] hover:brightness-150"
+        className="p-2 flex items-center gap-2 border text-[#46629E] border-[#46629E] transition md:hover:brightness-150"
         href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
