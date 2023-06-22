@@ -9,6 +9,7 @@ import PostWriter from "@/app/components/post-writer";
 import Breadclumb from "@/app/components/breadcrumb";
 import SnsBtn from "@/app/components/sns-btn";
 import Link from "next/link";
+import PostRelated from "@/app/components/post-related";
 
 export default async function PostsDetail({ post }: { post: Posts }) {
   const siteUrl = process.env.SITE_URL || "";
@@ -55,6 +56,14 @@ export default async function PostsDetail({ post }: { post: Posts }) {
       {post.writer && (
         <div className="mt-8">
           <PostWriter writer={post.writer} />
+        </div>
+      )}
+      {post.category && (
+        <div className="mt-12">
+          <h2 className="mb-4 text-2xl font-medium text-center border-b pb-2">
+            関連記事
+          </h2>
+          <PostRelated categoryId={post.category.id} currentPostId={post.id} />
         </div>
       )}
       <p className="w-4/5 mx-auto mt-8">
