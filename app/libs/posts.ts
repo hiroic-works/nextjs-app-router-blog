@@ -77,20 +77,42 @@ export const generatePostDeitalMetaData = async (
     sParams = { draftKey: searchParams?.dk };
   }
   const post = await getPostDetail(params.slug, sParams);
-  const siteUrl = process.env.SITE_URL || "";
-  const pageUrl = `${siteUrl}/posts/${params.slug}`;
-  return {
-    title: post.title,
-    description: post.description,
-    openGraph: {
-      ...parentMetadata.openGraph,
+  const pageUrl = `/posts/${params.slug}`;
+
+  try {
+    if (!post) {
+      return {
+        title: "ページがありません",
+        description: "ページが存在しませんでした",
+        robots: {
+          index: false,
+          follow: true,
+        },
+      };
+    }
+    return {
       title: post.title,
       description: post.description,
-      url: pageUrl,
-      type: "article",
-    },
-    alternates: {
-      canonical: pageUrl,
-    },
-  };
+      openGraph: {
+        ...parentMetadata.openGraph,
+        title: post.title,
+        description: post.description,
+        url: pageUrl,
+        type: "article",
+      },
+      alternates: {
+        canonical: pageUrl,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      title: "ページがありません",
+      description: "ページが存在しませんでした",
+      robots: {
+        index: false,
+        follow: true,
+      },
+    };
+  }
 };

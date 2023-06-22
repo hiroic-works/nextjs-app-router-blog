@@ -60,12 +60,14 @@ const skills: Skill[] = [
 
 export const metadata: Metadata = {
   title: "About",
+  description: "当ブログの運営者についてのページです",
   openGraph: {
     title: "About",
-    url: `${siteUrl}/about`,
+    description: "当ブログの運営者についてのページです",
+    url: "/about",
   },
   alternates: {
-    canonical: `${siteUrl}/about`,
+    canonical: "/about",
   },
 };
 

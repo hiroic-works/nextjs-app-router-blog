@@ -4,10 +4,11 @@ import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 
 const siteName = "サンプルブログ";
-const siteDescription = "サンプルブログです。";
+const siteDescription = "サンプルブログサイトです。";
 const siteUrl = process.env.SITE_URL || "";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: siteName,
     template: `%s | ${siteName}`,
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
       template: `%s | ${siteName}`,
     },
     description: siteDescription,
-    url: siteUrl,
+    url: "/",
     siteName: siteName,
     locale: "ja_JP",
     type: "website",
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     site: "@sample",
   },
   alternates: {
-    canonical: siteUrl,
+    canonical: "/",
   },
   formatDetection: {
     email: false,

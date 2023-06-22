@@ -2,6 +2,7 @@ import Pagination from "@/app/components/pagination";
 import PostItem from "@/app/components/post-item";
 import { LIMIT } from "@/app/libs/constants";
 import { getAllPost } from "@/app/libs/posts";
+import { Metadata } from "next";
 
 type Props = {
   params: { current: string };
@@ -9,6 +10,19 @@ type Props = {
 };
 
 export const revalidate = 60;
+
+export function generateMetadata({ params, searchParams }: Props): Metadata {
+  return {
+    title: `「${searchParams.q}」の検索結果 - Page ${params.current}`,
+    robots: {
+      index: false,
+      follow: true,
+    },
+    openGraph: {},
+    twitter: {},
+    alternates: {},
+  };
+}
 
 export default async function SearchPagination({
   params,

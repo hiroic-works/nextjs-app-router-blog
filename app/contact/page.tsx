@@ -4,6 +4,15 @@ import ContactForm from "@/app/components/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact",
+  description: "当ブログのお問い合わせページです。",
+  openGraph: {
+    title: "Contact",
+    description: "当ブログのお問い合わせページです。",
+    url: "/contact",
+  },
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function Contact() {

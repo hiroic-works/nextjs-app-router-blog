@@ -2,14 +2,31 @@ import { getAllPost, getCategoryDetail } from "@/app/libs/posts";
 import PostItem from "@/app/components/post-item";
 import Pagination from "@/app/components/pagination";
 import { LIMIT } from "@/app/libs/constants";
+import { Metadata } from "next";
+
+type Props = {
+  params: {
+    slug: string;
+    current: string;
+  };
+};
 
 export const revalidate = 60;
 
-export default async function CategoryPagination({
-  params,
-}: {
-  params: { slug: string; current: string };
-}) {
+export function generateMetadata({ params }: Props): Metadata {
+  return {
+    title: `「${params.slug}」のカテゴリー - Page ${params.current}`,
+    robots: {
+      index: false,
+      follow: true,
+    },
+    openGraph: {},
+    twitter: {},
+    alternates: {},
+  };
+}
+
+export default async function CategoryPagination({ params }: Props) {
   const { slug } = params;
   const current = parseInt(params.current, 10);
   const PaginationBasePath = `/category/${slug}/page`;

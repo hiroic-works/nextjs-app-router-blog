@@ -2,14 +2,35 @@ import { getAllPost, getCategoryDetail } from "@/app/libs/posts";
 import PostItem from "@/app/components/post-item";
 import Pagination from "@/app/components/pagination";
 import { LIMIT } from "@/app/libs/constants";
+import { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: { slug: string };
+};
 
 export const revalidate = 60;
 
-export default async function Category({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const parentData = await parent;
+  return {
+    title: `「${params.slug}」のカテゴリー`,
+    description: `当ブログの「${params.slug}」のカテゴリーについてのページです`,
+    openGraph: {
+      ...parentData.openGraph,
+      title: `「${params.slug}」のカテゴリー`,
+      description: `当ブログの「${params.slug}」のカテゴリーについてのページです`,
+      url: `/category/${params.slug}`,
+    },
+    alternates: {
+      canonical: `/category/${params.slug}`,
+    },
+  };
+}
+
+export default async function Category({ params }: Props) {
   const { slug } = params;
 
   const cat = await getCategoryDetail(slug);

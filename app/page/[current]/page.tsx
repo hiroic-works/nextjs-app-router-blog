@@ -2,16 +2,30 @@ import Pagination from "@/app/components/pagination";
 import PostItem from "@/app/components/post-item";
 import { LIMIT } from "@/app/libs/constants";
 import { getAllPost } from "@/app/libs/posts";
+import { Metadata } from "next";
 
-export const revalidate = 60;
-
-export default async function PostsPagination({
-  params,
-}: {
+type Props = {
   params: {
     current: string;
   };
-}) {
+};
+
+export const revalidate = 60;
+
+export function generateMetadata({ params }: Props): Metadata {
+  return {
+    title: `Page ${params.current}`,
+    robots: {
+      index: false,
+      follow: true,
+    },
+    openGraph: {},
+    twitter: {},
+    alternates: {},
+  };
+}
+
+export default async function PostsPagination({ params }: Props) {
   const current = parseInt(params.current, 10);
   const PaginationBasePath = `/page`;
 
