@@ -8,6 +8,7 @@ import parse, {
 import PostWriter from "@/app/components/post-writer";
 import Breadclumb from "@/app/components/breadcrumb";
 import SnsBtn from "@/app/components/sns-btn";
+import Link from "next/link";
 
 export default async function PostsDetail({ post }: { post: Posts }) {
   const siteUrl = process.env.SITE_URL || "";
@@ -56,6 +57,14 @@ export default async function PostsDetail({ post }: { post: Posts }) {
           <PostWriter writer={post.writer} />
         </div>
       )}
+      <p className="w-4/5 mx-auto mt-8">
+        <Link
+          href="/"
+          className="flex justify-center text-white bg-black border-0 py-2 px-2 focus:outline-none rounded text-lg transition md:hover:bg-slate-600"
+        >
+          トップページへ戻る
+        </Link>
+      </p>
     </article>
   );
 }
