@@ -3,6 +3,7 @@ import PostItem from "@/app/components/post-item";
 import Pagination from "@/app/components/pagination";
 import { LIMIT } from "@/app/libs/constants";
 import { Metadata, ResolvingMetadata } from "next";
+import NoPostContent from "@/app/components/no-post-content";
 
 type Props = {
   params: { slug: string };
@@ -42,14 +43,7 @@ export default async function Category({ params }: Props) {
   });
 
   if (!data.contents || data.contents.length === 0)
-    return (
-      <section className="text-gray-600 container px-5 py-10 md:py-20 mx-auto">
-        <h1 className="text-xl sm:text-3xl font-medium text-gray-900 mb-8">
-          {cat.name}の記事一覧
-        </h1>
-        <p className="text-lg text-gray-900 m-3">記事がありません</p>
-      </section>
-    );
+    return <NoPostContent catName={cat.name} />;
 
   return (
     <section className="text-gray-600 container px-5 py-10 md:py-20 mx-auto">
