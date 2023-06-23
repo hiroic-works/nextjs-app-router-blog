@@ -4,6 +4,7 @@ import Pagination from "@/app/components/pagination";
 import { LIMIT } from "@/app/libs/constants";
 import { Metadata, ResolvingMetadata } from "next";
 import NoPostContent from "@/app/components/no-post-content";
+import BaseContainer from "@/app/components/base-container";
 
 type Props = {
   params: { slug: string };
@@ -46,7 +47,7 @@ export default async function Category({ params }: Props) {
     return <NoPostContent catName={cat.name} />;
 
   return (
-    <section className="text-gray-600 container px-5 py-10 md:py-20 mx-auto">
+    <BaseContainer>
       <h1 className="text-xl sm:text-3xl font-medium text-gray-900 mb-8">
         {cat.name}の記事一覧
       </h1>
@@ -58,6 +59,6 @@ export default async function Category({ params }: Props) {
           basePath={PaginationBasePath}
         />
       </div>
-    </section>
+    </BaseContainer>
   );
 }

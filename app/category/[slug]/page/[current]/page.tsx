@@ -3,6 +3,7 @@ import PostList from "@/app/components/post-list";
 import Pagination from "@/app/components/pagination";
 import { LIMIT } from "@/app/libs/constants";
 import { Metadata } from "next";
+import BaseContainer from "@/app/components/base-container";
 
 type Props = {
   params: {
@@ -40,7 +41,7 @@ export default async function CategoryPagination({ params }: Props) {
   });
 
   return (
-    <section className="text-gray-600 container px-5 py-10 md:py-20 mx-auto">
+    <BaseContainer>
       <h1 className="text-xl sm:text-3xl font-medium text-gray-900 mb-8">
         {cat.name}の記事一覧
       </h1>
@@ -52,6 +53,6 @@ export default async function CategoryPagination({ params }: Props) {
           basePath={PaginationBasePath}
         />
       </div>
-    </section>
+    </BaseContainer>
   );
 }

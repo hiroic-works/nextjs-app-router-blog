@@ -3,6 +3,7 @@ import PostList from "@/app/components/post-list";
 import { LIMIT } from "@/app/libs/constants";
 import { getAllPost } from "@/app/libs/posts";
 import { Metadata } from "next";
+import BaseContainer from "@/app/components/base-container";
 
 type Props = {
   params: { current: string };
@@ -37,7 +38,7 @@ export default async function SearchPagination({
     q: searchParams.q,
   });
   return (
-    <section className="text-gray-600 container px-5 py-10 md:py-20 mx-auto">
+    <BaseContainer>
       <PostList posts={data.contents} />
       <div className="mt-8">
         <Pagination
@@ -47,6 +48,6 @@ export default async function SearchPagination({
           q={searchParams.q}
         />
       </div>
-    </section>
+    </BaseContainer>
   );
 }

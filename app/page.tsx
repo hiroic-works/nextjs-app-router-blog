@@ -3,6 +3,7 @@ import PostList from "@/app/components/post-list";
 import { LIMIT } from "@/app/libs/constants";
 import Pagination from "@/app/components/pagination";
 import NoPostContent from "@/app/components/no-post-content";
+import BaseContainer from "@/app/components/base-container";
 
 export const revalidate = 60;
 
@@ -15,7 +16,7 @@ export default async function Home() {
   if (!data.contents || data.contents.length === 0) return <NoPostContent />;
 
   return (
-    <section className="text-gray-600 container px-5 py-10 md:py-20 mx-auto">
+    <BaseContainer>
       <PostList posts={data.contents} />
       <div className="mt-8">
         <Pagination
@@ -23,6 +24,6 @@ export default async function Home() {
           basePath={PaginationBasePath}
         />
       </div>
-    </section>
+    </BaseContainer>
   );
 }
