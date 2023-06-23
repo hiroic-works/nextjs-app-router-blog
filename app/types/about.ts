@@ -7,4 +7,5 @@ export type Job = {
 export type Skill = {
   name: string;
   rate: 1 | 2 | 3 | 4 | 5;
+  text: string;
 };

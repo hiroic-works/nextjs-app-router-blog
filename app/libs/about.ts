@@ -28,22 +28,27 @@ export const getAllSkill = (): Skill[] => {
     {
       name: "HTML",
       rate: 5,
+      text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos illo cum HTML`,
     },
     {
       name: "CSS",
       rate: 4,
+      text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos illo cum CSS`,
     },
     {
       name: "JavaScript",
       rate: 3,
+      text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos illo cum JavaScript`,
     },
     {
       name: "React",
       rate: 2,
+      text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos illo cum React`,
     },
     {
       name: "Vue.js",
       rate: 1,
+      text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos illo cum Vue.js`,
     },
   ];
 };

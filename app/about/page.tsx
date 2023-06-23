@@ -61,7 +61,7 @@ export default function About() {
         <h1 className="flex flex-col text-center w-full sm:text-4xl text-3xl font-medium mb-6">
           Skills
         </h1>
-        <div className="flex flex-wrap -m-4 text-center">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 text-center">
           {skills.map((skill) => {
             return <SkillItem key={skill.name} skill={skill} />;
           })}

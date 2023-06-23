@@ -5,8 +5,8 @@ type Props = {
 };
 export default function SkillItem({ skill }: Props) {
   return (
-    <div key={skill.name} className="p-4 md:w-1/3 sm:w-1/2 w-full">
-      <div className="border border-gray-200 px-4 py-4 sm:py-6 rounded">
+    <div key={skill.name} className="border border-gray-200 box-border rounded">
+      <div className="px-4 py-4 sm:py-6">
         <h2 className="mb-2 text-lg tracking-wider">{skill.name}</h2>
         <div className="mb-2 flex items-center justify-center">
           {[1, 2, 3, 4, 5].map((val) => {
@@ -26,10 +26,7 @@ export default function SkillItem({ skill }: Props) {
             );
           })}
         </div>
-        <p className="text-sm">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-          illo cum
-        </p>
+        <p className="text-sm">{skill.text}</p>
       </div>
     </div>
   );
