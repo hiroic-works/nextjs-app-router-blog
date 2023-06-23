@@ -1,5 +1,5 @@
 import { getAllPost, getCategoryDetail } from "@/app/libs/posts";
-import PostItem from "@/app/components/post-item";
+import PostList from "@/app/components/post-list";
 import Pagination from "@/app/components/pagination";
 import { LIMIT } from "@/app/libs/constants";
 import { Metadata } from "next";
@@ -44,13 +44,7 @@ export default async function CategoryPagination({ params }: Props) {
       <h1 className="text-xl sm:text-3xl font-medium text-gray-900 mb-8">
         {cat.name}の記事一覧
       </h1>
-      <div className="flex flex-wrap -m-4">
-        {data.contents.map((post) => (
-          <div className="p-4 md:w-1/3" key={post.id}>
-            <PostItem post={post} />
-          </div>
-        ))}
-      </div>
+      <PostList posts={data.contents} />
       <div className="mt-8">
         <Pagination
           totalCount={data.totalCount}

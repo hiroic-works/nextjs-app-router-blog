@@ -1,5 +1,5 @@
 import { getAllPost } from "@/app/libs/posts";
-import PostItem from "@/app/components/post-item";
+import PostList from "@/app/components/post-list";
 import { LIMIT } from "@/app/libs/constants";
 import Pagination from "@/app/components/pagination";
 import { Metadata } from "next";
@@ -36,13 +36,7 @@ export default async function Search({ searchParams }: Props) {
 
   return (
     <section className="text-gray-600 container px-5 py-10 md:py-20 mx-auto">
-      <div className="flex flex-wrap -m-4">
-        {data.contents.map((post) => (
-          <div className="p-4 md:w-1/3" key={post.id}>
-            <PostItem post={post} />
-          </div>
-        ))}
-      </div>
+      <PostList posts={data.contents} />
       <div className="mt-8">
         <Pagination
           totalCount={data.totalCount}
