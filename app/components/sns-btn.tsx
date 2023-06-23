@@ -15,6 +15,7 @@ export default function SnsBtn({ url, title }: Props) {
         rel="noopener noreferrer"
       >
         <svg
+          aria-hidden="true"
           fill="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -33,6 +34,7 @@ export default function SnsBtn({ url, title }: Props) {
         rel="noopener noreferrer"
       >
         <svg
+          aria-hidden="true"
           fill="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"

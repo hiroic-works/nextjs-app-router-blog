@@ -29,7 +29,7 @@ export default async function PostsDetail({ post }: { post: Posts }) {
   };
 
   return (
-    <article className="text-gray-600 max-w-5xl px-5 py-10 md:py-20 mx-auto">
+    <article className="max-w-5xl px-5 py-10 md:py-20 mx-auto">
       <div className="mb-8">
         <Breadclumb post={post} />
       </div>

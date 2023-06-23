@@ -1,7 +1,7 @@
 import { Author } from "@/app/types/posts";
 import Image from "next/image";
 
-export default function PostItem({ writer }: { writer: Author }) {
+export default function PostWriter({ writer }: { writer: Author }) {
   return (
     <div className="max-w-2xl mx-auto flex justify-between border p-4 rounded">
       <div>

@@ -18,7 +18,7 @@ export default function Breadcrumb({ post }: { post: Posts }) {
             <div className="inline sm:flex items-center">
               <svg
                 aria-hidden="true"
-                className="w-6 h-6 text-gray-400 inline-block"
+                className="w-6 h-6 inline-block"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@ export default function Breadcrumb({ post }: { post: Posts }) {
           <div className="inline sm:flex items-center">
             <svg
               aria-hidden="true"
-              className="w-6 h-6 text-gray-400 inline-block"
+              className="w-6 h-6 inline-block"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"

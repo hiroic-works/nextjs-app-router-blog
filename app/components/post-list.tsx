@@ -5,7 +5,7 @@ type Props = {
   posts: Posts[];
 };
 
-export default function PostsPagination({ posts }: Props) {
+export default function PostList({ posts }: Props) {
   return (
     <div className="flex flex-wrap -m-4">
       {posts.map((post) => (

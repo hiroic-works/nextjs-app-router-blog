@@ -8,7 +8,7 @@ export default function NoPostContent({ catName }: Props) {
   return (
     <section className="py-8 px-4 text-center lg:w-1/2 md:w-2/3 mx-auto">
       {catName && (
-        <h1 className="text-xl sm:text-3xl font-medium text-gray-900 mb-8">
+        <h1 className="text-xl sm:text-3xl font-medium mb-8">
           {catName}の記事一覧
         </h1>
       )}

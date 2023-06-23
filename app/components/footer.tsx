@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="text-gray-600 border-t">
+    <footer className="border-t">
       <ScrollToTop />
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
         <p className="text-sm text-gray-500">© 2023 HW</p>
@@ -13,6 +13,7 @@ export default function Footer() {
             className="transition-all md:hover:scale-125 md:hover:brightness-150"
           >
             <svg
+              aria-hidden="true"
               fill="currentColor"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -28,6 +29,7 @@ export default function Footer() {
             className="ml-3 transition-all md:hover:scale-125 md:hover:brightness-150"
           >
             <svg
+              aria-hidden="true"
               fill="currentColor"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -43,6 +45,7 @@ export default function Footer() {
             className="ml-3 transition-all md:hover:scale-125 md:hover:brightness-150"
           >
             <svg
+              aria-hidden="true"
               fill="none"
               stroke="currentColor"
               strokeLinecap="round"

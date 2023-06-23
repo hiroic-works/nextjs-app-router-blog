@@ -6,7 +6,7 @@ type Props = {
   jobLength: number;
 };
 
-export default function About({ job, index, jobLength }: Props) {
+export default function JobItem({ job, index, jobLength }: Props) {
   return (
     <div
       key={index}

@@ -25,7 +25,7 @@ export default function Navgation({ categories }: { categories: Category[] }) {
         onClick={() => {
           setIsNavOpen((prev) => !prev);
         }}
-        className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden md:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+        className="inline-flex items-center p-2 ml-3 text-sm rounded-lg md:hidden md:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
         aria-controls="navbar-dropdown"
         aria-expanded={isNavOpen}
       >
