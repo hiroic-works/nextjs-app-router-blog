@@ -31,7 +31,7 @@ export default async function PostsDetail({ post }: { post: Posts }) {
   const breadclumbs = [
     {
       title: post?.category?.name || "",
-      href: post?.category?.id || "",
+      href: post?.category?.id ? `/category/${post?.category?.id}` : "",
     },
     {
       title: post.title,

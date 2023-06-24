@@ -16,7 +16,7 @@ export default function Breadcrumb({ lists }: Props) {
       <ol className="inline sm:inline-flex items-center truncate">
         {breadclumbLists.map((list, index) => (
           <li key={index} className="inline sm:block">
-            {breadclumbLists.length - 1 !== index ? (
+            {list.href && breadclumbLists.length - 1 !== index ? (
               <div className="inline sm:flex items-center">
                 <Link
                   href={list.href}
