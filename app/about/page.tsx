@@ -4,6 +4,7 @@ import BaseContainer from "@/app/components/base-container";
 import SkillItem from "@/app/components/skill-item";
 import JobItem from "@/app/components/job-item";
 import { getAllJob, getAllSkill } from "@/app/libs/about";
+import Breadclumb from "@/app/components/breadcrumb";
 
 const jobs = getAllJob();
 const skills = getAllSkill();
@@ -22,8 +23,15 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
+  const breadclumbs = [
+    {
+      title: "About",
+      href: "/about",
+    },
+  ];
   return (
     <BaseContainer>
+      <Breadclumb lists={breadclumbs} />
       <div className="lg:w-5/6 mb-8 sm:mb-16 mx-auto">
         <div className="flex flex-col sm:flex-row">
           <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">

@@ -28,10 +28,21 @@ export default async function PostsDetail({ post }: { post: Posts }) {
     },
   };
 
+  const breadclumbs = [
+    {
+      title: post?.category?.name || "",
+      href: post?.category?.id || "",
+    },
+    {
+      title: post.title,
+      href: "",
+    },
+  ];
+
   return (
     <article className="max-w-5xl px-5 py-10 md:py-20 mx-auto">
       <div className="mb-8">
-        <Breadclumb post={post} />
+        <Breadclumb lists={breadclumbs} />
       </div>
       <div className="prose max-w-full">
         <h1>{post.title}</h1>

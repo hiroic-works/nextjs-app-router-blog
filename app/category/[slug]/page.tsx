@@ -5,6 +5,7 @@ import { LIMIT } from "@/app/libs/constants";
 import { Metadata, ResolvingMetadata } from "next";
 import NoPostContent from "@/app/components/no-post-content";
 import BaseContainer from "@/app/components/base-container";
+import Breadclumb from "@/app/components/breadcrumb";
 
 type Props = {
   params: { slug: string };
@@ -46,9 +47,19 @@ export default async function Category({ params }: Props) {
   if (!data.contents || data.contents.length === 0)
     return <NoPostContent catName={cat.name} />;
 
+  const breadclumbs = [
+    {
+      title: cat.name || "",
+      href: slug,
+    },
+  ];
+
   return (
     <BaseContainer>
-      <h1 className="text-xl sm:text-3xl font-medium text-gray-900 mb-8">
+      <div className="mb-4">
+        <Breadclumb lists={breadclumbs} />
+      </div>
+      <h1 className="text-xl sm:text-3xl font-medium mb-8">
         {cat.name}の記事一覧
       </h1>
       <PostList posts={data.contents} />

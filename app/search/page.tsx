@@ -4,6 +4,7 @@ import { LIMIT } from "@/app/libs/constants";
 import Pagination from "@/app/components/pagination";
 import { Metadata } from "next";
 import BaseContainer from "@/app/components/base-container";
+import Breadclumb from "@/app/components/breadcrumb";
 
 type Props = {
   searchParams: { q: string };
@@ -35,8 +36,20 @@ export default async function Search({ searchParams }: Props) {
   if (!data.contents || data.contents.length === 0)
     return <h1>記事がありません</h1>;
 
+  const breadclumbs = [
+    {
+      title: `「${searchParams.q}」の検索結果`,
+      href: "",
+    },
+  ];
   return (
     <BaseContainer>
+      <div className="mb-4">
+        <Breadclumb lists={breadclumbs} />
+      </div>
+      <h1 className="text-xl sm:text-3xl font-medium mb-8">
+        「{searchParams.q}」の検索結果
+      </h1>
       <PostList posts={data.contents} />
       <div className="mt-8">
         <Pagination

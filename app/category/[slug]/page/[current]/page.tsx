@@ -4,6 +4,7 @@ import Pagination from "@/app/components/pagination";
 import { LIMIT } from "@/app/libs/constants";
 import { Metadata } from "next";
 import BaseContainer from "@/app/components/base-container";
+import Breadclumb from "@/app/components/breadcrumb";
 
 type Props = {
   params: {
@@ -40,9 +41,19 @@ export default async function CategoryPagination({ params }: Props) {
     filters: `category[equals]${slug}`,
   });
 
+  const breadclumbs = [
+    {
+      title: cat.name || "",
+      href: slug,
+    },
+  ];
+
   return (
     <BaseContainer>
-      <h1 className="text-xl sm:text-3xl font-medium text-gray-900 mb-8">
+      <div className="mb-4">
+        <Breadclumb lists={breadclumbs} />
+      </div>
+      <h1 className="text-xl sm:text-3xl font-medium mb-8">
         {cat.name}の記事一覧
       </h1>
       <PostList posts={data.contents} />
