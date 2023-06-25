@@ -1,4 +1,8 @@
-import { MicroCMSQueries, createClient } from "microcms-js-sdk";
+import {
+  CustomRequestInit,
+  MicroCMSQueries,
+  createClient,
+} from "microcms-js-sdk";
 import { Category, Posts } from "@/app/types/posts";
 import { notFound } from "next/navigation";
 import { ResolvingMetadata } from "next";
@@ -16,11 +20,15 @@ export const client = createClient({
   apiKey: process.env.MICROCMS_API_KEY,
 });
 
-export const getAllPost = async (queries?: MicroCMSQueries) => {
+export const getAllPost = async (
+  queries?: MicroCMSQueries,
+  customRequestInit?: CustomRequestInit
+) => {
   const listData = await client
     .getList<Posts>({
       endpoint: "blog",
       queries,
+      customRequestInit,
     })
     .catch(notFound);
 
@@ -29,23 +37,29 @@ export const getAllPost = async (queries?: MicroCMSQueries) => {
 
 export const getPostDetail = async (
   contentId: string,
-  queries?: MicroCMSQueries
+  queries?: MicroCMSQueries,
+  customRequestInit?: CustomRequestInit
 ) => {
   const detailData = await client
     .getListDetail<Posts>({
       endpoint: "blog",
       contentId,
       queries,
+      customRequestInit,
     })
     .catch(notFound);
   return detailData;
 };
 
-export const getAllCategory = async (queries?: MicroCMSQueries) => {
+export const getAllCategory = async (
+  queries?: MicroCMSQueries,
+  customRequestInit?: CustomRequestInit
+) => {
   const listData = await client
     .getList<Category>({
       endpoint: "categories",
       queries,
+      customRequestInit,
     })
     .catch(notFound);
 
@@ -54,13 +68,15 @@ export const getAllCategory = async (queries?: MicroCMSQueries) => {
 
 export const getCategoryDetail = async (
   contentId: string,
-  queries?: MicroCMSQueries
+  queries?: MicroCMSQueries,
+  customRequestInit?: CustomRequestInit
 ) => {
   const detailData = await client
     .getListDetail<Category>({
       endpoint: "categories",
       contentId,
       queries,
+      customRequestInit,
     })
     .catch(notFound);
   return detailData;
