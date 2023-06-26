@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import parse, {
   Element,
   HTMLReactParserOptions,
+  Text,
   attributesToProps,
 } from "html-react-parser";
 import PostWriter from "@/app/components/post-writer";
@@ -10,6 +11,8 @@ import Breadclumb from "@/app/components/breadcrumb";
 import SnsBtn from "@/app/components/sns-btn";
 import Link from "next/link";
 import PostRelated from "@/app/components/post-related";
+import hljs, { AutoHighlightResult } from "highlight.js";
+import "highlight.js/styles/github-dark-dimmed.css";
 
 export default async function PostsDetail({ post }: { post: Posts }) {
   const siteUrl = process.env.SITE_URL || "";
@@ -17,13 +20,28 @@ export default async function PostsDetail({ post }: { post: Posts }) {
 
   const parseOptions: HTMLReactParserOptions = {
     replace: (domNode) => {
-      if (domNode instanceof Element && domNode.name === "iframe") {
-        const props = attributesToProps(domNode.attribs);
-        return (
-          <div className="relative overflow-hidden w-full aspect-video">
-            <iframe {...props} className="absolute inset-0 w-full h-full" />
-          </div>
-        );
+      if (domNode instanceof Element) {
+        if (domNode.name === "iframe") {
+          const props = attributesToProps(domNode.attribs);
+          return (
+            <div className="relative overflow-hidden w-full aspect-video">
+              <iframe {...props} className="absolute inset-0 w-full h-full" />
+            </div>
+          );
+        }
+        if (domNode.name === "pre") {
+          const pre = domNode.children[0] as Element;
+          const props = attributesToProps(pre.attribs);
+          const code = pre.children[0] as Text;
+          const data: string = code.data;
+          const highlightCode: AutoHighlightResult = hljs.highlightAuto(data);
+          const dom = parse(highlightCode.value);
+          return (
+            <pre>
+              <code className={`${props?.className} hljs`}>{dom}</code>
+            </pre>
+          );
+        }
       }
     },
   };
