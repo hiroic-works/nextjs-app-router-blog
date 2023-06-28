@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import "./globals.css";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
+import GoogleAnalytics from "@/app/components/google-analytics";
 
 const siteName = "サンプルブログ";
 const siteDescription = "サンプルブログサイトです。";
@@ -48,6 +49,7 @@ export default function RootLayout({
     <html lang="ja">
       <head>
         <link rel="mask-icon" href="/icon.svg" />
+        <GoogleAnalytics />
       </head>
       <body className="flex flex-col min-h-screen">
         <Header />
